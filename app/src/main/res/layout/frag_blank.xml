@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0ddddd">
+
+    <!-- FIXME: check if this btn feature is overlapped on UtilBtn -->
+<!--    <com.example.googlelocation.customView.AbsLocationBtn-->
+<!--        android:layout_width="119dp"-->
+<!--        android:layout_height="51dp"-->
+<!--        android:layout_marginTop="28dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:clickable="true"-->
+<!--        android:focusable="true"-->
+<!--        android:id="@+id/btn"-->
+<!--        android:background="@color/colorAccent"-->
+<!--        android:text="@string/custeom_location_view"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/btn_lastlocatin"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/btn_lastlocatin"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/btn_lastlocatin"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <!-- FIXME: check this btn feature again when activity at the same time  -->
+    <!-- FIXME: check gps location request is same with activity. if same, the bugfix  -->
+    <!-- FIXME: check those parameter customize by user is available to use  -->
+    <!-- 若要客製化LocationRequest, 一定要設 intervalMillis  -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fetch addresss with Custom Location Request,\naddress ="
+        android:id="@+id/title_cus_location_request"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <com.example.googlelocation.module.customView.UtilBtn
+        android:id="@+id/btnCusLocationRequest"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="loading"
+        app:locationMethod="getAddressUpdates"
+        app:intervalMillis="60000"
+        app:maxUpdates="300"
+        app:maxUpdateAgeMillis="-1"
+        app:minUpdateIntervalMillis="1000"
+        app:minUpdateDistanceMeters="0.0"
+        app:waitForAccurateLocation="true"
+        app:granularity="permissionLevel"
+        app:priority="highAccuracy"
+        app:durationMillis="60000000"
+        app:maxUpdateDelayMillis="100"
+        android:textAlignment="center"
+        android:background="@color/common_google_signin_btn_text_light_disabled"
+        app:layout_constraintStart_toStartOf="@id/title_cus_location_request"
+        app:layout_constraintTop_toBottomOf="@id/title_cus_location_request"
+        />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Fetch address with Custom Location Setting,\naddress ="
+        android:id="@+id/title_cus_location_setting"
+        app:layout_constraintStart_toStartOf="@+id/btnCusLocationRequest"
+        app:layout_constraintTop_toBottomOf="@id/btnCusLocationRequest"
+        />
+    <com.example.googlelocation.module.customView.UtilBtn
+        android:id="@+id/btnCusLocationSetting"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="loading"
+        app:locationMethod="getAddressUpdates"
+        app:alwaysShow="false"
+        android:textAlignment="center"
+        android:background="@color/common_google_signin_btn_text_light_disabled"
+        app:layout_constraintStart_toStartOf="@+id/title_cus_location_setting"
+        app:layout_constraintTop_toBottomOf="@+id/title_cus_location_setting"
+         />
+</androidx.constraintlayout.widget.ConstraintLayout>

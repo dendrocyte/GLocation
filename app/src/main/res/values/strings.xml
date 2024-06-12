@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">GoogleLocation</string>
+    <string name="location">Location</string>
+    <string name="locate">locate</string>
+    <string name="last_location">last location</string>
+    <string name="custeom_location_view">customized location view</string>
+    <string name="current_location">current location</string>
+    <string name="location_permission_title">Location Permission</string>
+    <string name="location_permission_msg">request location to present the city</string>
+    <string name="allow">allow</string>
+    <string name="no_thanks">no, thanks</string>
+    <string name="service_not_available">The background geocoding service is not available due to a network error or IO exception.</string>
+    <string name="invalid_lat_long_used">The latitude and/or longitude values that are provided in the Location object are invalid.</string>
+    <string name="no_location_data_provided">The intent extras do not include the Location object that is required for reverse geocoding.</string>
+    <string name="no_address_found">The geocoder can\'t find an address for the given latitude\/longitude.</string>
+    <string name="address_found">Address found</string>
+</resources>

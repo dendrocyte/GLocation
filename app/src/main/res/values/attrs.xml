@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="UtilBtn">
+        <!--  ++++++++++++  -->
+        <!--  ++++++++++++  -->
+        <!--  Must-have   -->
+        <attr name="locationMethod" format="enum">
+            <enum name="getLastLocation" value="0"/>
+            <enum name="getLastAddress" value="1"/>
+            <enum name="getLocationUpdates" value="2"/>
+            <enum name="getAddressUpdates" value="3"/>
+        </attr>
+        <!--  ++++++++++++  -->
+        <!--  ++++++++++++  -->
+
+
+        <!-- 客製化LocationSettingRequest-->
+        <attr name="alwaysShow" format="boolean"/>
+
+
+        <!--  ++++++++++++  -->
+        <!--  ++++++++++++  -->
+        <!-- 若要客製化LocationRequest, 一定要設 intervalMillis  -->
+        <attr name="intervalMillis" format="string"/>
+        <attr name="priority" format="enum">
+            <enum name="highAccuracy" value="0"/>
+            <enum name="balancedPowerAccuracy" value="1"/>
+            <enum name="lowPowerAccuracy" value="2"/>
+        </attr>
+        <!-- long       -->
+        <attr name="minUpdateIntervalMillis" format="string"/>
+        <attr name="maxUpdateDelayMillis" format="string"/>
+        <attr name="durationMillis" format="string"/>
+        <attr name="maxUpdateAgeMillis" format="string"/>
+
+        <attr name="maxUpdates" format="integer"/>
+        <attr name="minUpdateDistanceMeters" format="float"/>
+        <attr name="waitForAccurateLocation" format="boolean"/>
+        <attr name="granularity" format="enum">
+            <enum name="permissionLevel" value="0"/>
+            <enum name="coarse" value="1"/>
+            <enum name="fine" value="2"/>
+        </attr>
+        <!--  ++++++++++++  -->
+        <!--  ++++++++++++  -->
+
+
+
+    </declare-styleable>
+</resources>
