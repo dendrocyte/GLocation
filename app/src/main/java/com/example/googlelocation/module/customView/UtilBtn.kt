@@ -243,6 +243,8 @@ class UtilBtn @JvmOverloads constructor(
             }
 
             //Grep locationMethod, this is must-have
+            //if not set on xml, feed default
+            //default: GetLastLocation(0)
             method = LocationUpdateUtil.LocationMethod.getId(
                 getInt(R.styleable.UtilBtn_locationMethod, 0)
             )
