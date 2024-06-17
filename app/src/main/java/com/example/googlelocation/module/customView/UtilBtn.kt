@@ -71,6 +71,7 @@ class UtilBtn @JvmOverloads constructor(
         )
         gpsLifecycleObserver = GPSResolvableApiLifecycleObserver{ on ->
             if (on) doNext() /*do the key things*/
+            else text = "Loading failed"
         }
         locationLifecycleOwner = LocationUpdateLifecycleObserver()
         owner?.lifecycle?.addObserver(permissionLifecycleObserver)
