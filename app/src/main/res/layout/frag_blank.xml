@@ -38,14 +38,14 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <com.example.googlelocation.module.customView.UtilBtn
+    <com.example.googlelocation.module.customView.UtilView
         android:id="@+id/btnCusLocationRequest"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="loading"
         app:locationMethod="getAddressUpdates"
         app:intervalMillis="60000"
-        app:maxUpdates="300"
+        app:maxUpdates="10"
         app:maxUpdateAgeMillis="-1"
         app:minUpdateIntervalMillis="1000"
         app:minUpdateDistanceMeters="0.0"
@@ -71,7 +71,7 @@
         app:layout_constraintStart_toStartOf="@+id/btnCusLocationRequest"
         app:layout_constraintTop_toBottomOf="@id/btnCusLocationRequest"
         />
-    <com.example.googlelocation.module.customView.UtilBtn
+    <com.example.googlelocation.module.customView.UtilView
         android:id="@+id/btnCusLocationSetting"
         android:layout_width="100dp"
         android:layout_height="50dp"

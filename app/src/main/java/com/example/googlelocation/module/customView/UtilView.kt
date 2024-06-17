@@ -3,7 +3,6 @@ package com.example.googlelocation.module.customView
 import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
-import android.content.res.TypedArray
 import android.location.Address
 import android.location.Location
 import android.os.Build
@@ -38,11 +37,11 @@ import cus.yiling.location.R
  * @feature use customize btn/ textview to show the location information,
  * @feature inclusive of google location module, permission check and gps check, reverse geocoding
  */
-class UtilBtn @JvmOverloads constructor(
+class UtilView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : AppCompatTextView(context, attrs) {
 
-    private val TAG = UtilBtn::class.java.simpleName
+    private val TAG = UtilView::class.java.simpleName
     private var permissionLifecycleObserver : PermissionLifecycleObserver
     private var gpsLifecycleObserver : GPSResolvableApiLifecycleObserver
     private var locationLifecycleOwner : LocationUpdateLifecycleObserver

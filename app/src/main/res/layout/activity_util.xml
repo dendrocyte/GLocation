@@ -25,7 +25,7 @@
 
     <!-- FIXME: check this btn feature again when frag at the same time  -->
 
-    <com.example.googlelocation.module.customView.UtilBtn
+    <com.example.googlelocation.module.customView.UtilView
         android:id="@+id/btn_cuslocation"
         android:layout_width="100dp"
         android:layout_height="50dp"
