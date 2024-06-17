@@ -65,12 +65,13 @@ class UtilView @JvmOverloads constructor(
                 }
                 override fun onDenied(denyPermission: Map<String, Boolean>) {
                     Log.e(TAG, "Permission Denied")
+                    doPermissionFail()
                 }
             }
         )
         gpsLifecycleObserver = GPSResolvableApiLifecycleObserver{ on ->
             if (on) doNext() /*do the key things*/
-            else text = "Loading failed"
+            else doGPSFail()
         }
         locationLifecycleOwner = LocationUpdateLifecycleObserver()
         owner?.lifecycle?.addObserver(permissionLifecycleObserver)
@@ -367,6 +368,16 @@ class UtilView @JvmOverloads constructor(
      * User want to customize doNext(), it shall use super.doNext() as well
      */
     fun doNext() = requestLocation()
+
+    /**
+     * 可以override
+     */
+    fun doGPSFail() { text = "loading failed" }
+
+    /**
+     * 可以override
+     */
+    fun doPermissionFail() { text = "loading failed" }
     //********************************//
     //********************************//
     //********************************//
