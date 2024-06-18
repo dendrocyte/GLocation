@@ -1,15 +1,15 @@
 package com.example.googlelocation.module.util
 
-import android.app.Activity
 import android.content.Context
 import android.location.LocationManager
 import android.util.Log
 import androidx.activity.result.ActivityResultCaller
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import com.example.googlelocation.module.core.IGPSResolvableCore
+import com.example.googlelocation.module.core.OnGpsListener
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
@@ -19,20 +19,11 @@ import com.google.android.gms.location.SettingsClient
 import com.google.android.gms.tasks.Task
 
 /**
- * Created by luyiling on 2024/2/23
- * Modified by
- *
- * TODO: Done
- * Description:
- *
- * @params
- * @params
- */
-/**
  * Created by luyiling on 2019/3/31
- *
- *
  * method for turn on GPS
+ *
+ * Modified by luyiling on 2024/2/23
+ * reconstruct structure
  */
 class GpsUtil private constructor() {
     private lateinit var locationManager: LocationManager
@@ -41,7 +32,7 @@ class GpsUtil private constructor() {
         private set
     var locateRequest: LocationRequest? = null
         private set
-    private lateinit var observer : GPSResolvableApiLifecycleObserver
+    private lateinit var observer : IGPSResolvableCore
     private lateinit var onGpsListener: OnGpsListener
     private val TAG = GpsUtil::class.java.simpleName
 
@@ -113,7 +104,7 @@ class GpsUtil private constructor() {
     }
 
     //只由Builder呼叫
-    private fun addObserver(lifecycleObserver: GPSResolvableApiLifecycleObserver) {
+    private fun addObserver(lifecycleObserver: IGPSResolvableCore) {
         observer = lifecycleObserver
         onGpsListener = lifecycleObserver.listener
     }
@@ -130,12 +121,12 @@ class GpsUtil private constructor() {
         private var _context : Context
         private var _settingRequest: LocationSettingsRequest? = null
         private var _locateRequest: LocationRequest? = null
-        private var _observer : GPSResolvableApiLifecycleObserver? = null
+        private var _observer : IGPSResolvableCore? = null
 
         constructor(context: Context){
             _context = context
         }
-        fun addObserver(observer: GPSResolvableApiLifecycleObserver) :Builder{
+        fun addObserver(observer: IGPSResolvableCore) :Builder{
             _observer = observer
             return this
         }
@@ -160,11 +151,35 @@ class GpsUtil private constructor() {
 
 }
 
+
+
+
+/**
+ * Created by luyiling on 2024/6/17
+ * Modified by
+ * @uifunction
+ */
+class GPSResovableCore(
+    caller: ActivityResultCaller,
+    listener: OnGpsListener
+) : IGPSResolvableCore(listener){
+
+    override val request: ActivityResultLauncher<IntentSenderRequest>
+    = caller.getRequest()
+}
+
+
+
+
+/**
+ * Created by luyiling on 2024/2/23
+ * Modified by
+ * @uiview
+ */
 class GPSResolvableApiLifecycleObserver(
-    val listener: OnGpsListener
-) : DefaultLifecycleObserver {
-    private lateinit var gpsOnRequest: ActivityResultLauncher<IntentSenderRequest>
-    private var _listener : OnGpsListener? = null
+    listener: OnGpsListener
+) : IGPSResolvableCore(listener), DefaultLifecycleObserver {
+    override lateinit var request: ActivityResultLauncher<IntentSenderRequest>
     private val TAG = GPSResolvableApiLifecycleObserver::class.java.simpleName
 
     /*隨著呼叫的lifecycle: onCreate*/
@@ -173,30 +188,19 @@ class GPSResolvableApiLifecycleObserver(
         Log.d(TAG, "onCreate")
         /*確認是ComponentActivity or Fragment*/
         if (owner !is ActivityResultCaller) return
-        gpsOnRequest = owner.registerForActivityResult(
-            ActivityResultContracts.StartIntentSenderForResult()
-        ) { result ->
-            listener.gpsStatus(result.resultCode == Activity.RESULT_OK)
-        }
+        request = owner.getRequest()
     }
 
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
         Log.d(TAG, "onStart")
-        _listener = listener
+        attach()
     }
 
     override fun onStop(owner: LifecycleOwner) {
         super.onStop(owner)
         Log.d(TAG, "onStop")
-        _listener = null
-    }
-
-    fun resolve(e: ResolvableApiException){
-        gpsOnRequest.launch(IntentSenderRequest.Builder(e.resolution).build())
+        release()
     }
 }
 
-fun interface OnGpsListener {
-    fun gpsStatus(isGPSEnable: Boolean)
-}

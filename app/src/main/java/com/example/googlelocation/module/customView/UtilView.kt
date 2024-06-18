@@ -11,7 +11,7 @@ import android.util.Log
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.example.googlelocation.module.util.Callback
+import com.example.googlelocation.module.core.Callback
 import com.example.googlelocation.module.util.GPSResolvableApiLifecycleObserver
 import com.example.googlelocation.module.util.GpsUtil
 import com.example.googlelocation.module.util.LocationUpdateUtil
@@ -59,7 +59,7 @@ class UtilView @JvmOverloads constructor(
 
         //2.Add activity/fragment observer
         permissionLifecycleObserver = PermissionLifecycleObserver(
-            object: Callback{
+            object: Callback {
                 override fun onGranted() {
                     gpsUtil.exeGPSOn()
                 }
