@@ -25,7 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.googlelocation.demo.UtilBtnActivity"
+        <activity android:name="com.example.googlelocation.demo.UtilViewActivity"
+            android:exported="false"
+            />
+        <activity android:name="com.example.googlelocation.demo.UtilFunctionActivity"
             android:exported="false"
             />
         <service
