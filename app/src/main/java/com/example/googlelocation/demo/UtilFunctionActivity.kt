@@ -33,6 +33,7 @@ class UtilFunctionActivity : AppCompatActivity() {
         binding = ActivityUtilFunctionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.iBBack.setOnClickListener { finish() }
     }
 
     override fun onStart() {
