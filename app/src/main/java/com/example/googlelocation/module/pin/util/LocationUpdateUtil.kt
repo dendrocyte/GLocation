@@ -1,4 +1,4 @@
-package com.example.googlelocation.module.util
+package com.example.googlelocation.module.pin.util
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -279,7 +279,7 @@ class LocationUpdateUtil(application: Context) {
         GetLocationUpdates(2),GetAddressUpdates(3);
 
         companion object{
-            fun getId(id: Int) : LocationMethod{
+            fun getId(id: Int) : LocationMethod {
                 for (method in enumValues<LocationMethod>()){
                     if (method.id == id) return method
                 }

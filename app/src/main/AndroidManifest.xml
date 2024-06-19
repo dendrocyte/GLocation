@@ -32,7 +32,7 @@
             android:exported="false"
             />
         <service
-            android:name="com.example.googlelocation.module.ParseLocationService"
+            android:name="com.example.googlelocation.module.pin.ParseLocationService"
             android:exported="false">
             <intent-filter>
                 <action android:name="${action_location}"/>

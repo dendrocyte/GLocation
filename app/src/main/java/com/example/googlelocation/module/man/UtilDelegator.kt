@@ -4,14 +4,13 @@ import android.content.Context
 import android.location.Address
 import android.location.Location
 import androidx.activity.result.ActivityResultCaller
-import com.example.googlelocation.module.GPSUnchangedException
-import com.example.googlelocation.module.PermissionDeniedException
-import com.example.googlelocation.module.core.Callback
-import com.example.googlelocation.module.core.OnGpsListener
-import com.example.googlelocation.module.util.GpsUtil
-import com.example.googlelocation.module.util.GPSResovableCore
-import com.example.googlelocation.module.util.LocationUpdateUtil
-import com.example.googlelocation.module.util.PermissionCore
+import com.example.googlelocation.module.pin.GPSUnchangedException
+import com.example.googlelocation.module.pin.PermissionDeniedException
+import com.example.googlelocation.module.pin.core.Callback
+import com.example.googlelocation.module.pin.util.GpsUtil
+import com.example.googlelocation.module.pin.util.GPSResovableCore
+import com.example.googlelocation.module.pin.util.LocationUpdateUtil
+import com.example.googlelocation.module.pin.util.PermissionCore
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationSettingsRequest
 import java.lang.Exception
@@ -33,7 +32,7 @@ class UtilDelegator(val owner: ActivityResultCaller) {
 
     //permission
     private val permissionCore = PermissionCore(
-        owner, object : Callback{
+        owner, object : Callback {
             override fun onGranted() {
                 gpsUtil.exeGPSOn()
             }

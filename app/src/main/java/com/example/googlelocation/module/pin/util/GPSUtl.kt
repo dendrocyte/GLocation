@@ -1,4 +1,4 @@
-package com.example.googlelocation.module.util
+package com.example.googlelocation.module.pin.util
 
 import android.content.Context
 import android.location.LocationManager
@@ -8,8 +8,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.example.googlelocation.module.core.IGPSResolvableCore
-import com.example.googlelocation.module.core.OnGpsListener
+import com.example.googlelocation.module.pin.core.IGPSResolvableCore
+import com.example.googlelocation.module.pin.core.OnGpsListener
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
@@ -126,15 +126,15 @@ class GpsUtil private constructor() {
         constructor(context: Context){
             _context = context
         }
-        fun addObserver(observer: IGPSResolvableCore) :Builder{
+        fun addObserver(observer: IGPSResolvableCore) : Builder {
             _observer = observer
             return this
         }
-        fun addSettingRequest(settingRequest: LocationSettingsRequest) :Builder{
+        fun addSettingRequest(settingRequest: LocationSettingsRequest) : Builder {
             _settingRequest = settingRequest
             return this
         }
-        fun addLocationRequest(locateRequest: LocationRequest):Builder{
+        fun addLocationRequest(locateRequest: LocationRequest): Builder {
             _locateRequest = locateRequest
             return this
         }

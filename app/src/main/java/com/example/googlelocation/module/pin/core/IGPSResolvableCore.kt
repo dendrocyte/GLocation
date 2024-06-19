@@ -1,4 +1,4 @@
-package com.example.googlelocation.module.core
+package com.example.googlelocation.module.pin.core
 
 import android.app.Activity
 import androidx.activity.result.ActivityResultCaller

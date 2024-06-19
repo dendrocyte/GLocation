@@ -1,12 +1,12 @@
-package com.example.googlelocation.module.util
+package com.example.googlelocation.module.pin.util
 
 import android.util.Log
 import androidx.activity.result.ActivityResultCaller
 import androidx.activity.result.ActivityResultLauncher
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.example.googlelocation.module.core.Callback
-import com.example.googlelocation.module.core.IPermissionCore
+import com.example.googlelocation.module.pin.core.Callback
+import com.example.googlelocation.module.pin.core.IPermissionCore
 
 /**
  * this file is created by luyiling on 2019/3/31

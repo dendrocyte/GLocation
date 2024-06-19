@@ -1,10 +1,9 @@
-package com.example.googlelocation.module
+package com.example.googlelocation.module.pin
 
 import android.app.Service
 import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
-import android.location.Geocoder.GeocodeListener
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
@@ -58,10 +57,11 @@ class ParseLocationService : Service() {
         val receiver : ResultReceiver = intent.getParcelableExtra(
             Constants.RECEIVER
         ) ?: throw Exception("Miss param: ResultReceiver")
-        val geocoder = Geocoder(baseContext, Locale.getDefault())
+
         var addresses: List<Address>? = null
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                val geocoder = Geocoder(baseContext, Locale.getDefault())
                 geocoder.getFromLocation(
                     location.latitude,
                     location.longitude,
@@ -72,6 +72,7 @@ class ParseLocationService : Service() {
                 handlerThread.start()
                 handler = Handler(handlerThread.looper)
                 handler.post{
+                    val geocoder = Geocoder(baseContext)
                     addresses = geocoder.getFromLocation(
                         location.latitude,
                         location.longitude,

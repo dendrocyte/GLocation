@@ -11,11 +11,11 @@ import android.util.Log
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.example.googlelocation.module.core.Callback
-import com.example.googlelocation.module.util.GPSResolvableApiLifecycleObserver
-import com.example.googlelocation.module.util.GpsUtil
-import com.example.googlelocation.module.util.LocationUpdateUtil
-import com.example.googlelocation.module.util.PermissionLifecycleObserver
+import com.example.googlelocation.module.pin.core.Callback
+import com.example.googlelocation.module.pin.util.GPSResolvableApiLifecycleObserver
+import com.example.googlelocation.module.pin.util.GpsUtil
+import com.example.googlelocation.module.pin.util.LocationUpdateUtil
+import com.example.googlelocation.module.pin.util.PermissionLifecycleObserver
 import com.google.android.gms.location.Granularity
 import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.LocationRequest
