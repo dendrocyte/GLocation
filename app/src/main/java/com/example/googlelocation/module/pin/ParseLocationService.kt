@@ -21,7 +21,7 @@ import java.util.Locale
 /**
  * Created by luyiling on 2024/2/26
  * Modified by
- * 使否要改成reverse geocoding 比較reliable
+ * 是否要改成reverse geocoding 比較reliable
  * 因為google 包沒有下載，要重開機才有用能用
  * https://developers.google.com/maps/documentation/geocoding/requests-reverse-geocoding?hl=zh-tw#reverse-requests
  *
@@ -40,7 +40,6 @@ import java.util.Locale
  * and returns a list of addresses.
  * The method is synchronous and may take a long time to do its work,
  * so you should not call it from the main, user interface (UI) thread of your app.
- * <IMPORTANT></IMPORTANT>
  */
 class ParseLocationService : Service() {
     private var errorMessage = ""

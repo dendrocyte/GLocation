@@ -21,7 +21,8 @@ import java.lang.Exception
  * Modified by
  *
  * TODO:
- * Description:
+ * Description: 特色是Util 功能，但不綁定在view裡，
+ * 由使用者本身處理callbacks的存活，可參考 {@link UtilFunctionActivity}
  *
  * @param owner Activity/Fragment
  * @params
