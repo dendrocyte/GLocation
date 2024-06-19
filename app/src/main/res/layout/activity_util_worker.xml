@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/container_root">
+
+    <ImageButton
+        android:id="@+id/iBBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrow_back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Demo worker"
+        app:layout_constraintLeft_toLeftOf="@id/iBBack"
+        app:layout_constraintTop_toBottomOf="@id/iBBack" />
+
+    <TextView
+        android:id="@+id/tVresult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="loading"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

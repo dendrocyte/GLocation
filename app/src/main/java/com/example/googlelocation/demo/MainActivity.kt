@@ -31,7 +31,9 @@ class MainActivity : AppCompatActivity() {
         binding.btnNonViewUtil.setOnClickListener {
             startActivity(Intent(baseContext, UtilFunctionActivity::class.java))
         }
-
+        binding.btnWorkerUtil.setOnClickListener {
+            startActivity(Intent(baseContext, UtilWorkerActivity::class.java))
+        }
     }
 
 
