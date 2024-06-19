@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import cus.yiling.location.R
-import cus.yiling.location.databinding.ActivityUtilBinding
+import cus.yiling.location.databinding.ActivityUtilViewBinding
 
 /**
  * Created by luyiling on 2024/2/26
@@ -31,14 +31,14 @@ import cus.yiling.location.databinding.ActivityUtilBinding
  * 3. in customized btn: use 3rd lib, listen lifecycle and activityResult method
 </IMPORTANT> *
  */
-class UtilBtnActivity : AppCompatActivity() {
+class UtilViewActivity : AppCompatActivity() {
     var location: TextView? = null
 
-    private lateinit var binding : ActivityUtilBinding
+    private lateinit var binding : ActivityUtilViewBinding
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityUtilBinding.inflate(layoutInflater)
+        binding = ActivityUtilViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.iBBack.setOnClickListener {

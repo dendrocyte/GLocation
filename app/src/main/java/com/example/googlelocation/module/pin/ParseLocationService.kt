@@ -1,10 +1,9 @@
-package com.example.googlelocation.module
+package com.example.googlelocation.module.pin
 
 import android.app.Service
 import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
-import android.location.Geocoder.GeocodeListener
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
@@ -22,7 +21,7 @@ import java.util.Locale
 /**
  * Created by luyiling on 2024/2/26
  * Modified by
- * 使否要改成reverse geocoding 比較reliable
+ * 是否要改成reverse geocoding 比較reliable
  * 因為google 包沒有下載，要重開機才有用能用
  * https://developers.google.com/maps/documentation/geocoding/requests-reverse-geocoding?hl=zh-tw#reverse-requests
  *
@@ -41,7 +40,6 @@ import java.util.Locale
  * and returns a list of addresses.
  * The method is synchronous and may take a long time to do its work,
  * so you should not call it from the main, user interface (UI) thread of your app.
- * <IMPORTANT></IMPORTANT>
  */
 class ParseLocationService : Service() {
     private var errorMessage = ""
@@ -58,10 +56,11 @@ class ParseLocationService : Service() {
         val receiver : ResultReceiver = intent.getParcelableExtra(
             Constants.RECEIVER
         ) ?: throw Exception("Miss param: ResultReceiver")
-        val geocoder = Geocoder(baseContext, Locale.getDefault())
+
         var addresses: List<Address>? = null
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                val geocoder = Geocoder(baseContext, Locale.getDefault())
                 geocoder.getFromLocation(
                     location.latitude,
                     location.longitude,
@@ -72,6 +71,7 @@ class ParseLocationService : Service() {
                 handlerThread.start()
                 handler = Handler(handlerThread.looper)
                 handler.post{
+                    val geocoder = Geocoder(baseContext)
                     addresses = geocoder.getFromLocation(
                         location.latitude,
                         location.longitude,

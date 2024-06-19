@@ -11,31 +11,30 @@ import android.util.Log
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.example.googlelocation.module.util.Callback
-import com.example.googlelocation.module.util.GPSResolvableApiLifecycleObserver
-import com.example.googlelocation.module.util.GpsUtil
-import com.example.googlelocation.module.util.LocationUpdateUtil
-import com.example.googlelocation.module.util.PermissionLifecycleObserver
+import com.example.googlelocation.module.pin.core.Callback
+import com.example.googlelocation.module.pin.util.GPSResolvableApiLifecycleObserver
+import com.example.googlelocation.module.pin.util.GpsUtil
+import com.example.googlelocation.module.pin.util.LocationUpdateUtil
+import com.example.googlelocation.module.pin.util.PermissionLifecycleObserver
 import com.google.android.gms.location.Granularity
 import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.LocationRequest
 import cus.yiling.location.R
-
-/**
- * Created by luyiling on 2024/2/23
- * Modified by
- *
- * TODO:
- * Description:
- *
- * @feature
- * @params
- */
 /**
  * Created by luyiling on 2019/4/4
  * @feature register / add / remove observer, actionHandler
  * @feature use customize btn/ textview to show the location information,
  * @feature inclusive of google location module, permission check and gps check, reverse geocoding
+ */
+/**
+ * Created by luyiling on 2024/2/23
+ * Modified by
+ *
+ * TODO:
+ * Description:這是一個view，自己去索取位置並呈現
+ *
+ * @feature
+ * @params
  */
 class UtilView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
@@ -59,7 +58,7 @@ class UtilView @JvmOverloads constructor(
 
         //2.Add activity/fragment observer
         permissionLifecycleObserver = PermissionLifecycleObserver(
-            object: Callback{
+            object: Callback {
                 override fun onGranted() {
                     gpsUtil.exeGPSOn()
                 }

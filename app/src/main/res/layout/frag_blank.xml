@@ -7,22 +7,6 @@
     android:layout_height="match_parent"
     android:background="#0ddddd">
 
-    <!-- FIXME: check if this btn feature is overlapped on UtilBtn -->
-<!--    <com.example.googlelocation.customView.AbsLocationBtn-->
-<!--        android:layout_width="119dp"-->
-<!--        android:layout_height="51dp"-->
-<!--        android:layout_marginTop="28dp"-->
-<!--        android:layout_marginBottom="8dp"-->
-<!--        android:clickable="true"-->
-<!--        android:focusable="true"-->
-<!--        android:id="@+id/btn"-->
-<!--        android:background="@color/colorAccent"-->
-<!--        android:text="@string/custeom_location_view"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/btn_lastlocatin"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/btn_lastlocatin"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/btn_lastlocatin"-->
-<!--        app:layout_constraintVertical_bias="0.0" />-->
 
 
     <!-- FIXME: check this btn feature again when activity at the same time  -->

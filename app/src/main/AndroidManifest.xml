@@ -25,11 +25,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.googlelocation.demo.UtilBtnActivity"
+        <activity android:name="com.example.googlelocation.demo.UtilViewActivity"
+            android:exported="false"
+            />
+        <activity android:name="com.example.googlelocation.demo.UtilFunctionActivity"
             android:exported="false"
             />
         <service
-            android:name="com.example.googlelocation.module.ParseLocationService"
+            android:name="com.example.googlelocation.module.pin.ParseLocationService"
             android:exported="false">
             <intent-filter>
                 <action android:name="${action_location}"/>
