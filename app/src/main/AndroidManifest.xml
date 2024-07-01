@@ -31,6 +31,9 @@
         <activity android:name="com.example.googlelocation.demo.UtilFunctionActivity"
             android:exported="false"
             />
+        <activity android:name="com.example.googlelocation.demo.UtilWorkerActivity"
+            android:exported="false"
+            />
         <service
             android:name="com.example.googlelocation.module.pin.ParseLocationService"
             android:exported="false">

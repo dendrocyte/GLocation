@@ -12,7 +12,7 @@ import cus.yiling.location.databinding.ActivityUtilFunctionBinding
  * Modified by
  *
  * TODO:
- * Description:
+ * Description: if you would not like to use util function via view, you can use UtilDelegator
  *
  * @params
  * @params
