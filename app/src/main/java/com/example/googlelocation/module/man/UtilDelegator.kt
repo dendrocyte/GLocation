@@ -54,7 +54,7 @@ class UtilDelegator(val owner: ActivityResultCaller) {
     //gps
     private val gpsOnCore = GPSResovableCore(owner) { on ->
         if(on) requestLocation(method)
-        when(method){
+        else when(method){
             LocationUpdateUtil.LocationMethod.GetLastLocation,
             LocationUpdateUtil.LocationMethod.GetLocationUpdates
             -> locationErrObserver
