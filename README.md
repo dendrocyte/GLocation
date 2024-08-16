@@ -1,9 +1,12 @@
-###GLocation
+### GLocation
 ----
 
 This is a textView to ask locate permission, check GPS on and present location by itself
 
-### Introduction
+![presentation](./app/asset/glocation.gif)
+
+
+### Use
 ----
 
 Declare this view on xml! That's it
