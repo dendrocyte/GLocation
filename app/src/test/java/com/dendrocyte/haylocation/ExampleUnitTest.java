@@ -1,4 +1,4 @@
-package com.example.googlelocation;
+package com.dendrocyte.haylocation;
 
 import org.junit.Test;
 
