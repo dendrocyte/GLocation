@@ -25,4 +25,5 @@ dependencyResolutionManagement {
 
     }
 }
-include ':app', ':haylocation'
+include ':app'
+include ':haylocation'

@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+
+    //publish //FIXME: 移動到.gradle 設定publish要做的
+    id 'maven-publish'
 }
 
 android {
@@ -38,6 +41,21 @@ android {
     //buildConfigField at android.defaultConfig is disable at default, make it enable here
     buildFeatures {
         buildConfig true
+    }
+}
+
+
+//publish //FIXME: 移動到.gradle 設定publish要做的
+project.afterEvaluate {
+    publishing {
+        publications {
+            libraryProject(MavenPublication) {
+                setGroupId 'com.dendrocyte'
+                setArtifactId 'haylocation'
+                version '1.0'
+                artifact bundleReleaseAar //to haylocation/build/outputs/aar/haylocation-release.aar
+            }
+        }
     }
 }
 
