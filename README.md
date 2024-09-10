@@ -9,6 +9,18 @@ This is a textView to ask locate permission, check GPS on and present location b
 ### Use
 ----
 
+Add Permission on AndroidManifest first
+```
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
+</manifest>    
+```
+
+
 Declare this view on xml! That's it
 ```
 <com.dendrocyte.haylocation.module.customView.UtilBtn
