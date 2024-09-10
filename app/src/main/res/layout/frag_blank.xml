@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <com.example.googlelocation.module.customView.UtilView
+    <com.dendrocyte.haylocation.module.customView.UtilView
         android:id="@+id/btnCusLocationRequest"
         android:layout_width="100dp"
         android:layout_height="50dp"
@@ -55,7 +55,7 @@
         app:layout_constraintStart_toStartOf="@+id/btnCusLocationRequest"
         app:layout_constraintTop_toBottomOf="@id/btnCusLocationRequest"
         />
-    <com.example.googlelocation.module.customView.UtilView
+    <com.dendrocyte.haylocation.module.customView.UtilView
         android:id="@+id/btnCusLocationSetting"
         android:layout_width="100dp"
         android:layout_height="50dp"
