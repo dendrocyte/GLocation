@@ -231,7 +231,8 @@ class LocationUpdateUtil(application: Context) {
         if (resultReceiver != null) {
             //關掉Service
             val intent = Intent(BuildConfig.ACTION_LOCATION)
-            intent.addCategory(context!!.packageName)
+            intent.addCategory(BuildConfig.LIBRARY_PACKAGE_NAME)
+            //declare servie at haylocation's AndroidManifest
             intent.setPackage(context!!.packageName)
             context!!.stopService(intent)
             resultReceiver = null
@@ -264,7 +265,9 @@ class LocationUpdateUtil(application: Context) {
         if (context != null) {
             Log.e(TAG, "CHECK pkg name = ${context!!.packageName}")
             val intent = Intent(BuildConfig.ACTION_LOCATION)
-            intent.addCategory(context!!.packageName)
+            intent.addCategory(BuildConfig.LIBRARY_PACKAGE_NAME)
+            //declare servie at haylocation's AndroidManifest
+            //context!!.packageName
             intent.setPackage(context!!.packageName)
             intent.putExtra(Constants.RECEIVER, resultReceiver)
             intent.putExtra(Constants.LOCATION_DATA_EXTRA, mCurrentLocation)

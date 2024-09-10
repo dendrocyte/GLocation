@@ -17,9 +17,8 @@ android {
 
         //buildConfigField
         buildConfigField "String", "ACTION_LOCATION", "\"action_location\""
-
         manifestPlaceholders =
-                [ glocationlib_package_name: "com.dendrocyte.haylocation", action_location: "action_location"]
+                [ haylocation_package_name: "com.dendrocyte.haylocation", action_location: "action_location"]
     }
 
     buildTypes {
