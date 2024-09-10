@@ -1,13 +1,13 @@
-package com.example.googlelocation.demo
+package com.dendrocyte.haylocation.demo
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.work.WorkManager
-import com.example.googlelocation.module.pin.core.Callback
-import com.example.googlelocation.module.pin.util.GPSResovableCore
-import com.example.googlelocation.module.pin.util.GpsUtil
-import com.example.googlelocation.module.pin.util.PermissionCore
+import com.dendrocyte.haylocation.module.pin.core.Callback
+import com.dendrocyte.haylocation.module.pin.util.GPSResovableCore
+import com.dendrocyte.haylocation.module.pin.util.GpsUtil
+import com.dendrocyte.haylocation.module.pin.util.PermissionCore
 import cus.yiling.location.databinding.ActivityUtilWorkerBinding
 
 /**

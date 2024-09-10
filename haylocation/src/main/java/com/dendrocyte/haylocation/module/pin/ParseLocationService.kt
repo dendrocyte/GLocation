@@ -1,4 +1,4 @@
-package com.example.googlelocation.module.pin
+package com.dendrocyte.haylocation.module.pin
 
 import android.app.Service
 import android.content.Intent
@@ -13,8 +13,8 @@ import android.os.IBinder
 import android.os.ResultReceiver
 import android.text.TextUtils
 import android.util.Log
-import com.example.googlelocation.Constants
-import cus.yiling.location.R
+import com.dendrocyte.haylocation.Constants
+import com.dendrocyte.haylocation.R
 import java.io.IOException
 import java.util.Locale
 

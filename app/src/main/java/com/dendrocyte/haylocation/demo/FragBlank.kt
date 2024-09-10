@@ -1,4 +1,4 @@
-package com.example.googlelocation.demo
+package com.dendrocyte.haylocation.demo
 
 import android.os.Bundle
 import android.view.LayoutInflater

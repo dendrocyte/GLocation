@@ -1,4 +1,4 @@
-package com.example.googlelocation.module.pin.core
+package com.dendrocyte.haylocation.module.pin.core
 
 import android.Manifest
 import android.content.Context

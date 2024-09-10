@@ -1,12 +1,12 @@
-package com.example.googlelocation.module.pin.util
+package com.dendrocyte.haylocation.module.pin.util
 
 import android.util.Log
 import androidx.activity.result.ActivityResultCaller
 import androidx.activity.result.ActivityResultLauncher
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.example.googlelocation.module.pin.core.Callback
-import com.example.googlelocation.module.pin.core.IPermissionCore
+import com.dendrocyte.haylocation.module.pin.core.Callback
+import com.dendrocyte.haylocation.module.pin.core.IPermissionCore
 
 /**
  * this file is created by luyiling on 2019/3/31

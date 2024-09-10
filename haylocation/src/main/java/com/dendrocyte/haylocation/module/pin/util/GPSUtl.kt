@@ -1,4 +1,4 @@
-package com.example.googlelocation.module.pin.util
+package com.dendrocyte.haylocation.module.pin.util
 
 import android.content.Context
 import android.location.LocationManager
@@ -8,8 +8,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.example.googlelocation.module.pin.core.IGPSResolvableCore
-import com.example.googlelocation.module.pin.core.OnGpsListener
+import com.dendrocyte.haylocation.module.pin.core.IGPSResolvableCore
+import com.dendrocyte.haylocation.module.pin.core.OnGpsListener
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices

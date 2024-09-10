@@ -1,4 +1,4 @@
-package com.example.googlelocation.module.pin
+package com.dendrocyte.haylocation.module.pin
 
 /**
  * Created by luyiling on 2024/6/18

@@ -1,4 +1,4 @@
-package com.example.googlelocation.module.pin.util
+package com.dendrocyte.haylocation.module.pin.util
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,13 +10,13 @@ import android.os.Handler
 import android.os.Looper
 import android.os.ResultReceiver
 import android.util.Log
-import com.example.googlelocation.Constants
+import com.dendrocyte.haylocation.Constants
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
-import cus.yiling.location.BuildConfig
+import com.dendrocyte.haylocation.BuildConfig
 import java.lang.IllegalArgumentException
 
 /**

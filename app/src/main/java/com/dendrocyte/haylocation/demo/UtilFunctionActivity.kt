@@ -1,10 +1,10 @@
-package com.example.googlelocation.demo
+package com.dendrocyte.haylocation.demo
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.googlelocation.module.man.UtilDelegator
-import com.example.googlelocation.module.pin.util.LocationUpdateUtil
+import com.dendrocyte.haylocation.module.man.UtilDelegator
+import com.dendrocyte.haylocation.module.pin.util.LocationUpdateUtil
 import cus.yiling.location.databinding.ActivityUtilFunctionBinding
 
 /**

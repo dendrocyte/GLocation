@@ -1,4 +1,4 @@
-package com.example.googlelocation.demo
+package com.dendrocyte.haylocation.demo
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,7 +9,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkerParameters
-import com.example.googlelocation.module.pin.util.LocationUpdateUtil
+import com.dendrocyte.haylocation.module.pin.util.LocationUpdateUtil
 import kotlinx.coroutines.delay
 
 /**

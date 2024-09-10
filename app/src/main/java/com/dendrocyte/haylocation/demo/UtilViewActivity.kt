@@ -1,4 +1,4 @@
-package com.example.googlelocation.demo
+package com.dendrocyte.haylocation.demo
 
 import android.annotation.SuppressLint
 import android.os.Bundle

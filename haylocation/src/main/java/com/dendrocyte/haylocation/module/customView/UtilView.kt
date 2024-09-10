@@ -1,4 +1,4 @@
-package com.example.googlelocation.module.customView
+package com.dendrocyte.haylocation.module.customView
 
 import android.app.Activity
 import android.content.Context
@@ -11,15 +11,16 @@ import android.util.Log
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.example.googlelocation.module.pin.core.Callback
-import com.example.googlelocation.module.pin.util.GPSResolvableApiLifecycleObserver
-import com.example.googlelocation.module.pin.util.GpsUtil
-import com.example.googlelocation.module.pin.util.LocationUpdateUtil
-import com.example.googlelocation.module.pin.util.PermissionLifecycleObserver
+import com.dendrocyte.haylocation.R
+import com.dendrocyte.haylocation.module.pin.core.Callback
+import com.dendrocyte.haylocation.module.pin.util.GPSResolvableApiLifecycleObserver
+import com.dendrocyte.haylocation.module.pin.util.GpsUtil
+import com.dendrocyte.haylocation.module.pin.util.LocationUpdateUtil
+import com.dendrocyte.haylocation.module.pin.util.PermissionLifecycleObserver
 import com.google.android.gms.location.Granularity
 import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.LocationRequest
-import cus.yiling.location.R
+
 /**
  * Created by luyiling on 2019/4/4
  * @feature register / add / remove observer, actionHandler
@@ -98,7 +99,7 @@ class UtilView @JvmOverloads constructor(
                 // If the custom view does not call it,
                 // then the custom attributes used by this view will not be visible in layout inspection tools.
                 saveAttributeDataForStyleable(
-                    context,R.styleable.UtilBtn,attrs,
+                    context, R.styleable.UtilBtn,attrs,
                     this, defStyleAttr,
                     defStyleRes
                 )

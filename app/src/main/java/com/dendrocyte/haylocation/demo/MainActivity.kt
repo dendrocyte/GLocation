@@ -1,4 +1,4 @@
-package com.example.googlelocation.demo
+package com.dendrocyte.haylocation.demo
 
 import android.content.Intent
 import android.os.Bundle

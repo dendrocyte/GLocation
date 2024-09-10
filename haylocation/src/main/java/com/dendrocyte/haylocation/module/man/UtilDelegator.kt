@@ -1,16 +1,16 @@
-package com.example.googlelocation.module.man
+package com.dendrocyte.haylocation.module.man
 
 import android.content.Context
 import android.location.Address
 import android.location.Location
 import androidx.activity.result.ActivityResultCaller
-import com.example.googlelocation.module.pin.GPSUnchangedException
-import com.example.googlelocation.module.pin.PermissionDeniedException
-import com.example.googlelocation.module.pin.core.Callback
-import com.example.googlelocation.module.pin.util.GpsUtil
-import com.example.googlelocation.module.pin.util.GPSResovableCore
-import com.example.googlelocation.module.pin.util.LocationUpdateUtil
-import com.example.googlelocation.module.pin.util.PermissionCore
+import com.dendrocyte.haylocation.module.pin.GPSUnchangedException
+import com.dendrocyte.haylocation.module.pin.PermissionDeniedException
+import com.dendrocyte.haylocation.module.pin.core.Callback
+import com.dendrocyte.haylocation.module.pin.util.GpsUtil
+import com.dendrocyte.haylocation.module.pin.util.GPSResovableCore
+import com.dendrocyte.haylocation.module.pin.util.LocationUpdateUtil
+import com.dendrocyte.haylocation.module.pin.util.PermissionCore
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationSettingsRequest
 import java.lang.Exception
