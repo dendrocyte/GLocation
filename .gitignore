@@ -17,3 +17,4 @@ jdks
 native
 .tmp
 wrapper
+gradle.properties
