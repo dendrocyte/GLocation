@@ -21,9 +21,9 @@ project.afterEvaluate {
                  * 在其他專案中被導入時則使用
                  * implementation "com.dendrocyte:haylocation:1.0"
                  */
-                groupId 'com.dendrocyte'
-                artifactId 'haylocation'
-                version '1.0'
+                groupId publishGroup
+                artifactId publishArtifactId
+                version publishVersion
 
                 //exist .m2/repository/com/dendrocyte/haylocation/1.0/haylocation-1.0.aar
                 /**
@@ -35,12 +35,10 @@ project.afterEvaluate {
                  * => haylocation/build/outputs/aar/haylocation-release.aar
                  */
                 from components.release
-                //.gradle/caches/modules-2/files-2.1/
+                //以下只會生成aar, 不會將dependencies包進去
                 //artifact bundleReleaseAar //to haylocation/build/outputs/aar/haylocation-release.aar
                 //artifact bundleDebugAar //to haylocation/build/outputs/aar/haylocation-debug.aar
             }
-
-
         }
 
         repositories {
@@ -48,6 +46,3 @@ project.afterEvaluate {
         }
     }
 }
-
-
-
