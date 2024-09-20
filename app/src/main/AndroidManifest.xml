@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name="com.example.googlelocation.demo.MainActivity"
+        <activity android:name="com.dendrocyte.haylocation.demo.MainActivity"
             android:exported="true"
             android:configChanges="orientation|screenSize|screenLayout">
             <!--not to handle recreate activity due to screen orientation change-->
@@ -25,24 +25,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.googlelocation.demo.UtilViewActivity"
+        <activity android:name="com.dendrocyte.haylocation.demo.UtilViewActivity"
             android:exported="false"
             />
-        <activity android:name="com.example.googlelocation.demo.UtilFunctionActivity"
+        <activity android:name="com.dendrocyte.haylocation.demo.UtilFunctionActivity"
             android:exported="false"
             />
-        <activity android:name="com.example.googlelocation.demo.UtilWorkerActivity"
+        <activity android:name="com.dendrocyte.haylocation.demo.UtilWorkerActivity"
             android:exported="false"
             />
-        <service
-            android:name="com.example.googlelocation.module.pin.ParseLocationService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="${action_location}"/>
-                <category android:name="${glocationlib_package_name}"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </service>
+
     </application>
 
 </manifest>

@@ -1,0 +1,48 @@
+/**
+ * plugins {} 的寫法只能在build.gradle, settings.gradle
+ * 不在這兩個位子只能改用 apply plugin: 'id'
+*/
+apply plugin: 'maven-publish'
+
+
+project.afterEvaluate {
+    publishing {
+        publications {
+            /**
+             * 下行的library是指在publication夾子的新增的子夾名
+             * MavenPublication 是指遠端目的地
+             */
+            library(MavenPublication) {
+                /**
+                 * 在 build/publication/library
+                 * 生成 pom.xml
+                 * 並註明此library的groupId, artifactId, version
+                 *
+                 * 在其他專案中被導入時則使用
+                 * implementation "com.dendrocyte:haylocation:1.0"
+                 */
+                groupId publishGroup
+                artifactId publishArtifactId
+                version publishVersion
+
+                //exist .m2/repository/com/dendrocyte/haylocation/1.0/haylocation-1.0.aar
+                /**
+                 * Keypoint：將library所使用的dependency都打包標記版本號
+                 * Applies the component for the release build variant
+                 * 生成module.json
+                 * 並在module.json 和 pom.xml 標記所使用的dependencies
+                 * 並生成 aar
+                 * => haylocation/build/outputs/aar/haylocation-release.aar
+                 */
+                from components.release
+                //以下只會生成aar, 不會將dependencies包進去
+                //artifact bundleReleaseAar //to haylocation/build/outputs/aar/haylocation-release.aar
+                //artifact bundleDebugAar //to haylocation/build/outputs/aar/haylocation-debug.aar
+            }
+        }
+
+        repositories {
+            mavenLocal()
+        }
+    }
+}

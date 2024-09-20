@@ -1,4 +1,4 @@
-### GLocation
+### HayLocation
 ----
 
 This is a textView to ask locate permission, check GPS on and present location by itself
@@ -9,9 +9,21 @@ This is a textView to ask locate permission, check GPS on and present location b
 ### Use
 ----
 
+Add Permission on AndroidManifest first
+```
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
+</manifest>    
+```
+
+
 Declare this view on xml! That's it
 ```
-<com.example.googlelocation.module.customView.UtilBtn
+<com.dendrocyte.haylocation.module.customView.UtilBtn
         android:id="@+id/btn_cuslocation"
         android:layout_width="100dp"
         android:layout_height="50dp"        
