@@ -13,6 +13,8 @@ on:
     tags: 
       - 'v*.*'    # 匹配 v1.0, v1.1 等兩段的標籤
       - 'v*.*.*'  # 匹配 v1.0.0, v2.1.5 等三段的標籤
+    branches:
+      - main
 
 jobs:
   build:
