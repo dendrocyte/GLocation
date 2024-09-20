@@ -38,5 +38,6 @@ daemon
 jdks
 native
 .tmp
-wrapper
+gradle/wrapper/gradle-wrapper.properties
+wrapper/dists
 gradle.properties
