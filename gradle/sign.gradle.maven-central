@@ -1,0 +1,85 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+project.afterEvaluate {
+    publishing {
+        publications {
+            /**
+             * 下行的myLibrary是指在publication夾子的新增的子夾名
+             * MavenPublication 是指遠端目的地
+             */
+            myLibrary(MavenPublication) {
+                /**
+                 * 在 build/publication/myLibrary
+                 * 生成 pom.xml
+                 * 並註明此library的groupId, artifactId, version
+                 *
+                 * groupId 必須是sonatypeGroup
+                 * 否則sonatype會認不出來，這個groupId 是需要做到機構認可的
+                 *
+                 * 在其他專案中被導入時則使用
+                 * implementation "io.github.dendrocyte:haylocation:1.0"
+                 */
+                groupId sonatypeGroup
+                artifactId publishArtifactId
+                version publishVersion
+
+                from components.release
+
+                // Configure POM metadata for the published artifact
+                pom {
+                    name = publishName
+                    description = publishDesc
+                    url = websiteUrl
+
+                    licenses {
+                        license {
+                            name = licenseName
+                            url = licenseUrl
+                        }
+                    }
+
+                    // Specify developer information
+                    developers {
+                        developer {
+                            id = devName
+                            name = devName
+                            email = devEmail
+                        }
+                    }
+
+                    // Specify SCM information
+                    scm {
+                        url = websiteUrl
+                    }
+                }
+            }
+        }
+        repositories {
+            maven {
+                // 如果是正式版，使用暫存 URL
+                url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+                // 如果是快照版，使用快照 URL
+                // url "https://oss.sonatype.org/content/repositories/snapshots/"
+                credentials {
+                    username = mavenCentralUsername
+                    password = mavenCentralPassword
+                }
+            }
+        }
+    }
+    signing {
+        // Enable GPG signing on mavenCentral part
+        // myLibrary 是publications的子夾名字，可以指定sign哪一個夾子
+        sign publishing.publications.myLibrary
+    }
+}
+
+
+
+
+
+
+
+
+

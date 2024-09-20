@@ -58,5 +58,9 @@ dependencies {
 }
 
 
-//加入publish.gradle
+/**
+ * mavenLocal: publish.gradle
+ * mavenCentral: signing.gradle
+ */
+apply from: "$rootDir/gradle/sign.gradle"
 apply from: "$rootDir/gradle/publish.gradle"
