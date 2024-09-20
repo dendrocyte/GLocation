@@ -58,6 +58,27 @@ dependencies {
 }
 
 
+
+
+
+// Publish
+ext{
+    //NOTE: Publish version
+    publishVersion=1.0
+
+    publishGroup="com.dendrocyte"
+    publishArtifactId="haylocation"
+    publishName="haylocation"
+    publishDesc="A button to fetch and present location by itself"
+    licenseName="The Apache License, Version 2.0"
+    licenseUrl="https://www.apache.org/licenses/LICENSE-2.0.txt"
+    sonatypeGroup="io.github.dendrocyte"
+    githubPackageGroup="com.dendrocyte"
+    devName="dendrocyte"
+    devEmail="dendrocyte0107@gmail.com"
+    websiteUrl="https://github.com/dendrocyte/haylocation"
+}
+
 /**
  * mavenLocal: publish.gradle
  * mavenCentral: sign.gradle

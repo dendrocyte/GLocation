@@ -18,7 +18,7 @@ project.afterEvaluate {
                  * 否則sonatype會認不出來，這個groupId 是需要做到機構認可的
                  *
                  * 在其他專案中被導入時則使用
-                 * implementation "io.github.dendrocyte:haylocation:1.0"
+                 * implementation "com.dendrocyte:haylocation:1.0"
                  */
                 groupId githubPackageGroup
                 artifactId publishArtifactId
