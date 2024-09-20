@@ -60,7 +60,7 @@ dependencies {
 
 /**
  * mavenLocal: publish.gradle
- * mavenCentral: signing.gradle
+ * mavenCentral: sign.gradle
  */
 apply from: "$rootDir/gradle/sign.gradle"
 apply from: "$rootDir/gradle/publish.gradle"
