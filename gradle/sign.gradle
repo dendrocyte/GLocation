@@ -7,6 +7,7 @@ project.afterEvaluate {
             /**
              * 下行的myLibrary是指在publication夾子的新增的子夾名
              * MavenPublication 是指遠端目的地
+             * NOTE: 和snapshot 使用不同的publication子夾
              */
             myLibrary(MavenPublication) {
                 /**
@@ -14,31 +15,25 @@ project.afterEvaluate {
                  * 生成 pom.xml
                  * 並註明此library的groupId, artifactId, version
                  *
-                 * groupId 必須是sonatypeGroup
-                 * 否則sonatype會認不出來，這個groupId 是需要做到機構認可的
                  *
                  * 在其他專案中被導入時則使用
                  * implementation "com.dendrocyte:haylocation:1.0"
                  */
                 groupId githubPackageGroup
                 artifactId publishArtifactId
+                //NOTE: 沒有-SNATSHOT字尾
                 version publishVersion
-
                 from components.release
-
-                // Configure POM metadata for the published artifact
-                pom {
+                pom{
                     name = publishName
                     description = publishDesc
                     url = websiteUrl
-
                     licenses {
                         license {
                             name = licenseName
                             url = licenseUrl
                         }
                     }
-
                     // Specify developer information
                     developers {
                         developer {
@@ -47,7 +42,6 @@ project.afterEvaluate {
                             email = devEmail
                         }
                     }
-
                     // Specify SCM information
                     scm {
                         url = websiteUrl
@@ -58,10 +52,13 @@ project.afterEvaluate {
         repositories {
             maven {
                 name = "GitHubPackages"
-                url = "https://maven.pkg.github.com/${gprUsername}/${publishName}"
+                url = "https://maven.pkg.github.com/${githubUser}/${publishName}"
                 credentials {
-                    username = gprUsername
-                    password = gprPassword
+                    //gradle.properties ?: env
+                    // (= publish via task ?: via workflow)
+                    username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                    //NOTE: 使用不同的pwd 上傳
+                    password = project.findProperty("gpr.password") ?: System.getenv("GITHUB_TOKEN")
                 }
             }
         }

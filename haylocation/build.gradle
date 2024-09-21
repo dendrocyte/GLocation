@@ -63,25 +63,33 @@ dependencies {
 
 // Publish
 ext{
-    //NOTE: Publish version
-    publishVersion=1.0
+    //NOTE: Update Publish Version and Publish Note when publishing every pom.xml
+    publishVersion="1.0.0"
+    publishDesc="A button to fetch and present location by itself" +
+            "\n[feature]\n" +
+            "\n1.Add UtilView, a customize textview, for request location by its own" +
+            "\n2.Add UtilDelegator for requesting location without bonding to a view"
 
     publishGroup="com.dendrocyte"
     publishArtifactId="haylocation"
     publishName="haylocation"
-    publishDesc="A button to fetch and present location by itself"
     licenseName="The Apache License, Version 2.0"
     licenseUrl="https://www.apache.org/licenses/LICENSE-2.0.txt"
     sonatypeGroup="io.github.dendrocyte"
     githubPackageGroup="com.dendrocyte"
+    githubUser="dendrocyte"
     devName="dendrocyte"
     devEmail="dendrocyte0107@gmail.com"
     websiteUrl="https://github.com/dendrocyte/haylocation"
 }
 
+
 /**
- * mavenLocal: publish.gradle
- * mavenCentral: sign.gradle
+ * mavenLocal: publish.gradle.maven-local
+ * mavenCentral: sign.gradle.maven-central
+ * github:
+ * - snapshot: publish.gradle
+ * - package: sign.gradle
  */
-apply from: "$rootDir/gradle/sign.gradle"
 apply from: "$rootDir/gradle/publish.gradle"
+apply from: "$rootDir/gradle/sign.gradle"
