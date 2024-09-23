@@ -21,14 +21,14 @@ jobs:
       contents: read
       packages: write
 
-    # Those below variables need to correspond to the credentials environment variables used in
-    # the publishing section of your build.gradle
+    # 以下的變數值：要和gradle.properties, Github/secrets 一致
+    # 以下變數名：要和publish.gradle的env variable 一致
     env:
-        USERNAME: ${{ github.actor }}
-        TOKEN: ${{ secrets.GPR_SNST_TOKEN }}
-        SIGNING_KEY_ID: ${{ secrets.SIGN_KEYID }}
-        SIGNING_KEY_PASSWORD: ${{ secrets.SIGN_PWD }}
-        SIGNING_KEY_RING: ${{ secrets.SIGN_KEYRING }}
+        GITHUB_ACTOR: ${{ github.actor }}
+        GITHUB_TOKEN: ${{ secrets.GPR_SNST_TOKEN }}
+        #SIGNING_KEY_ID: ${{ secrets.SIGN_KEYID }}
+        #SIGNING_KEY_PASSWORD: ${{ secrets.SIGN_PWD }}
+        #SIGNING_KEY_RING: ${{ secrets.SIGN_KEYRING }}
 
     steps:
     - name: Checkout codes
@@ -50,14 +50,14 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
 
-    # 確定GPG 已經安裝，並把key pair 存入Github runner的GPG keychain
-    # gpg --import 是把key pair存入系統
-    # gpg --import-ownertrust 是把key pair存入且標為信任來源
-    - name: Set up GPG for signing
+    # 需要新增gradle.properties, 才能publish to Github package
+    - name: Add Gradle Properties
       run: |
-          echo "$SIGNING_KEY" | gpg --batch --import
-          echo "$SIGNING_KEY_ID:6:" | gpg --import-ownertrust
+        touch gradle.properties
+        echo "android.useAndroidX=true" >> gradle.properties 
+        echo "android.nonTransitiveRClass=true" >> gradle.properties
 
+    # sign plugin is not use gpg, just set secrets on env for workflow to fetch
     # --no-daemon 是確保Gradle 用新的process 且用完就關掉, 每個build 都是最新的, 不使用cache info
     - name: Publish to GitHub Packages
       run: ./gradlew publishSnapshotPublicationToGitHubSnapshotRepository --no-daemon

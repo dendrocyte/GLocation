@@ -64,11 +64,9 @@ dependencies {
 // Publish
 ext{
     //NOTE: Update Publish Version and Publish Note when publishing every pom.xml
-    publishVersion="1.0.0"
-    publishDesc="A button to fetch and present location by itself" +
-            "\n[feature]\n" +
-            "\n1.Add UtilView, a customize textview, for request location by its own" +
-            "\n2.Add UtilDelegator for requesting location without bonding to a view"
+    publishVersion="1.0.1"
+    publishDesc="Check why Github package is not updated via workflow"
+
 
     publishGroup="com.dendrocyte"
     publishArtifactId="haylocation"
