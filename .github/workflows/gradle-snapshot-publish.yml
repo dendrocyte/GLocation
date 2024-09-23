@@ -60,4 +60,4 @@ jobs:
     # sign plugin is not use gpg, just set secrets on env for workflow to fetch
     # --no-daemon 是確保Gradle 用新的process 且用完就關掉, 每個build 都是最新的, 不使用cache info
     - name: Publish to GitHub Packages
-      run: ./gradlew publishSnapshotPublicationToGitHubSnapshotRepository --no-daemon --scan
+      run: ./gradlew publishSnapshotPublicationToGitHubSnapshotRepository --no-daemon
