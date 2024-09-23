@@ -58,6 +58,8 @@ jobs:
         touch gradle.properties
         echo "android.useAndroidX=true" >> gradle.properties 
         echo "android.nonTransitiveRClass=true" >> gradle.properties
+        echo "kotlin.code.style=official" >> gradle.properties
+        echo "org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8" >> gradle.properties
 
     # sign plugin is not use gpg, just set secrets on env for workflow to fetch
     # --no-daemon 是確保Gradle 用新的process 且用完就關掉, 每個build 都是最新的, 不使用cache info
