@@ -50,6 +50,12 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
 
+    # 需要新增gradle.properties, 才能publish to Github package
+    - name: Add Gradle Properties
+      run: |
+        echo "android.useAndroidX=true" >> gradle.properties 
+        echo "android.nonTransitiveRClass=true" >> gradle.properties
+
     # sign plugin is not use gpg, just set secrets on env for workflow to fetch
     # --no-daemon 是確保Gradle 用新的process 且用完就關掉, 每個build 都是最新的, 不使用cache info
     - name: Publish to GitHub Packages
