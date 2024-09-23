@@ -26,7 +26,6 @@ jobs:
     env:
         GITHUB_ACTOR: ${{ github.actor }}
         GITHUB_TOKEN: ${{ secrets.GPR_SNST_TOKEN }}
-        GRADLE_ENTERPRISE_ACCEPT_TERMS_OF_SERVICE: "yes"
         #SIGNING_KEY_ID: ${{ secrets.SIGN_KEYID }}
         #SIGNING_KEY_PASSWORD: ${{ secrets.SIGN_PWD }}
         #SIGNING_KEY_RING: ${{ secrets.SIGN_KEYRING }}
