@@ -61,3 +61,6 @@ jobs:
     # --no-daemon 是確保Gradle 用新的process 且用完就關掉, 每個build 都是最新的, 不使用cache info
     - name: Publish to GitHub Packages
       run: ./gradlew publishSnapshotPublicationToGitHubSnapshotRepository --no-daemon
+      env:
+        USERNAME: ${{ github.actor }}
+        TOKEN: ${{ secrets.GPR_SNST_TOKEN }}
