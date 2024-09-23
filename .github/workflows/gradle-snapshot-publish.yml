@@ -23,8 +23,10 @@ jobs:
 
     # Those below variables need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
+    # FIXBACK:  username get *** if use GPR_NAME
+    # FIXBACK: test if global env field seems not work,
     env:
-        USERNAME: ${{ secrets.GPR_NAME }}
+        USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GPR_SNST_TOKEN }}
         SIGNING_KEY_ID: ${{ secrets.SIGN_KEYID }}
         SIGNING_KEY_PASSWORD: ${{ secrets.SIGN_PWD }}
@@ -56,11 +58,10 @@ jobs:
         touch gradle.properties
         echo "android.useAndroidX=true" >> gradle.properties 
         echo "android.nonTransitiveRClass=true" >> gradle.properties
-
+        echo "TEST=${TOKEN}"
+        echo "TEST==${USERNAME}"
+        echo "TEST====${secrets.GPR_NAME}"
     # sign plugin is not use gpg, just set secrets on env for workflow to fetch
     # --no-daemon 是確保Gradle 用新的process 且用完就關掉, 每個build 都是最新的, 不使用cache info
     - name: Publish to GitHub Packages
       run: ./gradlew publishSnapshotPublicationToGitHubSnapshotRepository --no-daemon
-      env:
-        USERNAME: ${{ github.actor }}
-        TOKEN: ${{ secrets.GPR_SNST_TOKEN }}
