@@ -55,7 +55,7 @@ jobs:
     # gpg --import-ownertrust 是把key pair存入且標為信任來源
     - name: Set up GPG for signing
       run: |
-          echo "$SIGNING_KEY" | gpg --batch --import
+          echo "SIGNING_KEY_PASSWORD" | gpg --batch --import
           echo "$SIGNING_KEY_ID:6:" | gpg --import-ownertrust
 
     # --no-daemon 是確保Gradle 用新的process 且用完就關掉, 每個build 都是最新的, 不使用cache info
