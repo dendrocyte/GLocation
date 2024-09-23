@@ -53,6 +53,7 @@ jobs:
     # 需要新增gradle.properties, 才能publish to Github package
     - name: Add Gradle Properties
       run: |
+        touch gradle.properties
         echo "android.useAndroidX=true" >> gradle.properties 
         echo "android.nonTransitiveRClass=true" >> gradle.properties
 
