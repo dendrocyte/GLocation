@@ -24,6 +24,7 @@ project.afterEvaluate {
                 //NOTE: 沒有-SNATSHOT字尾
                 version publishVersion
                 from components.release
+                //NOTE: 要複製 SNAPSHOT's pom
                 pom{
                     name = publishName
                     description = publishDesc
