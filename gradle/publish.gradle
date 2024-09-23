@@ -13,7 +13,6 @@ project.afterEvaluate {
              * MavenPublication 是指遠端目的地
              */
             snapshot(MavenPublication) {
-                //NOTE: version 會加上-SNAPSHOT
                 /**
                  * 在 build/publication/library
                  * 生成 pom.xml
@@ -24,7 +23,10 @@ project.afterEvaluate {
                  */
                 groupId githubPackageGroup
                 artifactId publishArtifactId
+                //NOTE: version 會加上-SNAPSHOT
                 version "${publishVersion}-SNAPSHOT"
+
+
                 //exist .m2/repository/com/dendrocyte/haylocation/1.0/haylocation-1.0.aar
                 /**
                  * Keypoint：將library所使用的dependency都打包標記版本號
@@ -34,7 +36,6 @@ project.afterEvaluate {
                  * 並生成 aar
                  * => haylocation/build/outputs/aar/haylocation-release.aar
                  */
-                //NOTE: SNAPSHOT不用使用到release
                 from components.release
 
 
