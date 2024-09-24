@@ -58,8 +58,8 @@ jobs:
 
     # 若要開啟簽署功能
     - name: Access SecretRingFile
-      run: | 
-        echo "${{ secrets.SIGN_KEYRING }}" > ${{ runner.temp }}/my_secret.gpg
+      run: |
+        printf "%s" "${{ secrets.SIGN_KEYRING }}" > ${{ runner.temp }}/my_secret.gpg
 
     # 若要開啟簽署功能
     - name: Verify SecretRingFile
