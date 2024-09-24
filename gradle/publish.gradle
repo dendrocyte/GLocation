@@ -3,7 +3,8 @@
  * 不在這兩個位子只能改用 apply plugin: 'id'
 */
 apply plugin: 'maven-publish'
-
+//PATCH:測簽署功能
+apply plugin: 'signing'
 
 project.afterEvaluate {
     publishing {
@@ -81,5 +82,10 @@ project.afterEvaluate {
                 }
             }
         }
+    }
+
+    //PATCH:測簽署功能
+    signing {
+        sign publishing.publications.snapshot
     }
 }
