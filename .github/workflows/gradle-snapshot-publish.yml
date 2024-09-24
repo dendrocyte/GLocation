@@ -58,7 +58,7 @@ jobs:
 
     # 若要開啟簽署功能
     - name: Access SecretRingFile
-      run: echo ${{ secrets.SIGN_KEYRING }} > ${{ runner.temp }}/my_secret.gpg > /dev/null
+      run: echo ${{ secrets.SIGN_KEYRING }} > ${{ runner.temp }}/my_secret.gpg
 
     # 若要開啟簽署功能
     - name: Add Sign credential into Gradle Properties
@@ -74,4 +74,5 @@ jobs:
 
     # 若要開啟簽署功能
     - name: Clean up secret file
+      if: always()  # 無論之前的步驟成功與否，這一步都會執行
       run: rm -rf ${{ runner.temp }}/my_secret.gpg
