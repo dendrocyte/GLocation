@@ -28,7 +28,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GPR_TOKEN }} #TEST:若開啟簽署功能，一定要使用secrets.GPR_TOKEN？
         SIGNING_KEY_ID: ${{ secrets.SIGN_KEYID }} #開啟簽署功能要用
         SIGNING_KEY_PASSWORD: ${{ secrets.SIGN_PWD }} #開啟簽署功能要用
-        SIGNING_KEY_RING: ${{ secrets.SIGN_KEYRING }} #開啟簽署功能要用
 
     steps:
     - name: Checkout codes
@@ -58,13 +57,21 @@ jobs:
         echo "android.nonTransitiveRClass=true" >> gradle.properties
 
     # 若要開啟簽署功能
+    - name: Access SecretRingFile
+      run: echo ${{ secrets.SIGN_KEYRING }} > ${{ runner.temp }}/my_secret.gpg > /dev/null
+
+    # 若要開啟簽署功能
     - name: Add Sign credential into Gradle Properties
       run: |
         echo "signing.keyId=${SIGNING_KEY_ID}" >> gradle.properties
         echo "signing.password=${SIGNING_KEY_PASSWORD}" >> gradle.properties
-        echo "signing.secretKeyRingFile=${SIGNING_KEY_RING}" >> gradle.properties
+        echo "signing.secretKeyRingFile=${{ runner.temp }}/my_secret.gpg" >> gradle.properties
 
     # sign plugin is not use gpg, just set secrets on env for workflow to fetch
     # --no-daemon 是確保Gradle 用新的process 且用完就關掉, 每個build 都是最新的, 不使用cache info
     - name: Publish to GitHub Packages
       run: ./gradlew publishSnapshotPublicationToGitHubSnapshotRepository --no-daemon
+
+    # 若要開啟簽署功能
+    - name: Clean up secret file
+      run: rm -rf ${{ runner.temp }}/my_secret.gpg
