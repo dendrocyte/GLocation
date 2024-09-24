@@ -59,14 +59,14 @@ jobs:
     # 若要開啟簽署功能
     - name: Access SecretRingFile
       run: |
-        printf "%s" "${{ secrets.SIGN_KEYRING }}" > ${{ runner.temp }}/my_secret.gpg
+        printf "%s" "${{ secrets.SIGN_KEYRING }}" | base64 --decode > ${{ runner.temp }}/my_secret.gpg
 
     # 若要開啟簽署功能
     - name: Verify SecretRingFile
       run: |
         gpg --list-secret-keys --keyring ${{ runner.temp }}/my_secret.gpg
 
-      # 若要開啟簽署功能
+    # 若要開啟簽署功能
     - name: Add Sign credential into Gradle Properties
       run: |
         echo "signing.keyId=${SIGNING_KEY_ID}" >> gradle.properties
