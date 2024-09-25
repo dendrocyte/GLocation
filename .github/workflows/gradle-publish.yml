@@ -22,7 +22,7 @@ on:
 # 要執行job 需要main branch 才行
 jobs:
   build:
-    if: github.ref == 'refs/heads/main' && startsWith(github.ref, 'refs/tags/v') #另一個條件限制寫在此
+    if: github.ref == 'refs/heads/main' #另一個條件限制寫在此
     runs-on: ubuntu-latest
     permissions:
       contents: read
