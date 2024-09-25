@@ -64,9 +64,8 @@ dependencies {
 // Publish
 ext{
     //NOTE: Update Publish Version and Publish Note when publishing every pom.xml
-    publishVersion="1.0.2"
-    publishDesc="Confirm workflow for PACKAGE" +
-            "1.Confirm workflow for PACKAGE is ready"
+    publishVersion="1.0.3"
+    publishDesc="[Bugfix] Job is skipped on workflow when publishing PACKAGE"
 
 
     publishGroup="com.dendrocyte"
