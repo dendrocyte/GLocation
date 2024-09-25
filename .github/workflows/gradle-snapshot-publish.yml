@@ -25,10 +25,7 @@ jobs:
     # 以下變數名：要和publish.gradle的env variable 一致
     env:
         GITHUB_ACTOR: ${{ github.actor }}
-        GITHUB_TOKEN: ${{ secrets.GPR_SNST_TOKEN }}
-        #SIGNING_KEY_ID: ${{ secrets.SIGN_KEYID }}
-        #SIGNING_KEY_PASSWORD: ${{ secrets.SIGN_PWD }}
-        #SIGNING_KEY_RING: ${{ secrets.SIGN_KEYRING }}
+        GITHUB_TOKEN: ${{ secrets.GPR_SNST_TOKEN }} #若開啟簽署功能，一定要使用secrets.GPR_TOKEN
 
     steps:
     - name: Checkout codes
@@ -51,7 +48,7 @@ jobs:
       uses: gradle/actions/setup-gradle@v4
 
     # 需要新增gradle.properties, 才能publish to Github package
-    - name: Add Gradle Properties
+    - name: Add Style into Gradle Properties
       run: |
         touch gradle.properties
         echo "android.useAndroidX=true" >> gradle.properties 

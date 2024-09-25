@@ -65,7 +65,6 @@ project.afterEvaluate {
         }
     }
     signing {
-        // Enable GPG signing on mavenCentral part
         // myLibrary 是publications的子夾名字，可以指定sign哪一個夾子
         sign publishing.publications.myLibrary
     }
