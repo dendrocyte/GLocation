@@ -11,7 +11,7 @@ android {
         minSdk 24
         targetSdk 34
         versionCode 1
-        versionName "1.0.1"
+        versionName "1.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -65,7 +65,8 @@ dependencies {
 ext{
     //NOTE: Update Publish Version and Publish Note when publishing every pom.xml
     publishVersion="1.0.2"
-    publishDesc="Check workflow for PACKAGE is ready"
+    publishDesc="Confirm workflow for PACKAGE" +
+            "1.Confirm workflow for PACKAGE is ready"
 
 
     publishGroup="com.dendrocyte"
