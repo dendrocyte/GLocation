@@ -8,21 +8,19 @@
 name: Gradle Package
 
 # Trigger Keypoint: 打上tag版本號
-# 由於on 只能是一個條件限制，無法兩個條件都符合才能觸發，所以另一個條件要在jobs時才做限制
+# 由於on 只能是一個條件限制，若兩個條件都符合才能觸發，所以另一個條件要寫在jobs
 on:
   push:
     tags: 
       - 'v*.*'    # 匹配 v1.0, v1.1 等兩段的標籤
       - 'v*.*.*'  # 匹配 v1.0.0, v2.1.5 等三段的標籤
-    # 只要tag符合 or main branch 都會觸發
-    #branches:
-    #  - main
 
 
-# 要執行job 需要main branch 才行
+
+# 要執行job 需要tag branch 才行
 jobs:
   build:
-    if: github.ref == 'refs/heads/main' #另一個條件限制寫在此
+    #if: github.ref == 'refs/tags/v*' #限制在推至tags
     runs-on: ubuntu-latest
     permissions:
       contents: read

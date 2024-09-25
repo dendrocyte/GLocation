@@ -11,7 +11,7 @@ android {
         minSdk 24
         targetSdk 34
         versionCode 1
-        versionName "1.0.3"
+        versionName "1.0.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -64,7 +64,7 @@ dependencies {
 // Publish
 ext{
     //NOTE: Update Publish Version and Publish Note when publishing every pom.xml
-    publishVersion="1.0.4"
+    publishVersion="1.0.5"
     publishDesc="[Bugfix] Job is skipped on workflow when publishing PACKAGE"
 
 
