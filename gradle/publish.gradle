@@ -3,7 +3,8 @@
  * 不在這兩個位子只能改用 apply plugin: 'id'
 */
 apply plugin: 'maven-publish'
-
+//PATCH:測簽署功能
+//apply plugin: 'signing'
 
 project.afterEvaluate {
     publishing {
@@ -12,7 +13,7 @@ project.afterEvaluate {
              * 下行的library是指在publication夾子的新增的子夾名
              * MavenPublication 是指遠端目的地
              */
-            library(MavenPublication) {
+            snapshot(MavenPublication) {
                 /**
                  * 在 build/publication/library
                  * 生成 pom.xml
@@ -21,9 +22,11 @@ project.afterEvaluate {
                  * 在其他專案中被導入時則使用
                  * implementation "com.dendrocyte:haylocation:1.0"
                  */
-                groupId publishGroup
+                groupId githubPackageGroup
                 artifactId publishArtifactId
-                version publishVersion
+                //NOTE: version 會加上-SNAPSHOT
+                version "${publishVersion}-SNAPSHOT"
+
 
                 //exist .m2/repository/com/dendrocyte/haylocation/1.0/haylocation-1.0.aar
                 /**
@@ -35,14 +38,54 @@ project.afterEvaluate {
                  * => haylocation/build/outputs/aar/haylocation-release.aar
                  */
                 from components.release
+
+
                 //以下只會生成aar, 不會將dependencies包進去
                 //artifact bundleReleaseAar //to haylocation/build/outputs/aar/haylocation-release.aar
                 //artifact bundleDebugAar //to haylocation/build/outputs/aar/haylocation-debug.aar
+                pom{
+                    name = publishName
+                    description = publishDesc
+                    url = websiteUrl
+                    licenses {
+                        license {
+                            name = licenseName
+                            url = licenseUrl
+                        }
+                    }
+                    // Specify developer information
+                    developers {
+                        developer {
+                            id = devName
+                            name = devName
+                            email = devEmail
+                        }
+                    }
+                    // Specify SCM information
+                    scm {
+                        url = websiteUrl
+                    }
+                }
             }
         }
 
         repositories {
-            mavenLocal()
+            maven {
+                name = "GitHubSnapshot"
+                url = "https://maven.pkg.github.com/${githubUser}/${publishName}"
+                credentials {
+                    //gradle.properties ?: env
+                    // (= publish via task ?: via workflow)
+                    username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                    //NOTE: 使用SNATSHOT的password
+                    password = project.findProperty("gpr.pwd.snst") ?: System.getenv("GITHUB_TOKEN")
+                }
+            }
         }
     }
+
+    //PATCH:測簽署功能
+//    signing {
+//        sign publishing.publications.snapshot
+//    }
 }

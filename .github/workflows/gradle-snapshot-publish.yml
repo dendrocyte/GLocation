@@ -1,0 +1,60 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will build a package using Gradle and then publish it to GitHub packages when a release is created
+# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#Publishing-using-gradle
+
+name: Publish Snapshot
+
+# Trigger Keypoint
+on:
+  push:
+    branches:
+      - snapshot/* # 匹配所有以 snapshot/ 開頭的分支
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    # 以下的變數值：要和gradle.properties, Github/secrets 一致
+    # 以下變數名：要和publish.gradle的env variable 一致
+    env:
+        GITHUB_ACTOR: ${{ github.actor }}
+        GITHUB_TOKEN: ${{ secrets.GPR_SNST_TOKEN }} #若開啟簽署功能，一定要使用secrets.GPR_TOKEN
+
+    steps:
+    - name: Checkout codes
+      uses: actions/checkout@v4
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'corretto'
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+    # By Manual
+    # 1.Check if you have gpg keys
+    # 2.Save credential at gradle.properties
+    # 3.Check `Snapshot` as new child of publication
+    # 4.Check `GitHubSnapshot` as repo of publication
+     
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4
+
+    # 需要新增gradle.properties, 才能publish to Github package
+    - name: Add Style into Gradle Properties
+      run: |
+        touch gradle.properties
+        echo "android.useAndroidX=true" >> gradle.properties 
+        echo "android.nonTransitiveRClass=true" >> gradle.properties
+
+    # sign plugin is not use gpg, just set secrets on env for workflow to fetch
+    # --no-daemon 是確保Gradle 用新的process 且用完就關掉, 每個build 都是最新的, 不使用cache info
+    - name: Publish to GitHub Packages
+      run: ./gradlew publishSnapshotPublicationToGitHubSnapshotRepository --no-daemon

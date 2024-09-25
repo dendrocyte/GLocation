@@ -24,6 +24,14 @@ jobs:
       contents: read
       packages: write
 
+    # 以下的變數值：要和gradle.properties, Github/secrets 一致
+    # 以下變數名：要和publish.gradle的env variable 一致
+    env:
+      GITHUB_ACTOR: ${{ github.actor }}
+      GITHUB_TOKEN: ${{ secrets.GPR_TOKEN }}
+      SIGNING_KEY_ID: ${{ secrets.SIGN_KEYID }}
+      SIGNING_KEY_PASSWORD: ${{ secrets.SIGN_PWD }}
+
     steps:
     - name: Checkout codes
       uses: actions/checkout@v4
@@ -39,18 +47,46 @@ jobs:
      # 1.Check if you have gpg keys
      # 2.Save credential at gradle.properties
      # 3.Set `myLibrary` as new child of publication
-     
+      # 4.Check `GitHubPackage` as repo of publication
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
 
-    - name: Build with Gradle
-      run: ./gradlew build
+    # 需要新增gradle.properties, 才能publish to Github package
+    - name: Add Style into Gradle Properties
+      run: |
+        touch gradle.properties
+        echo "android.useAndroidX=true" >> gradle.properties 
+        echo "android.nonTransitiveRClass=true" >> gradle.properties
 
-    
-    # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
-    # the publishing section of your build.gradle
+    # 若要開啟簽署功能
+    # base64 是為了減少換行符轉貼到Github上有誤，使用base64先換成字串
+    # 現在要base64解碼,再新增SecretRingFile in GitHub/Runner
+    - name: Access SecretRingFile
+      run: |
+        printf "%s" "${{ secrets.SIGN_KEYRING }}" | base64 --decode > ${{ runner.temp }}/my_secret.gpg
+
+    # 若要開啟簽署功能
+    # 在開始publish前先確定建立的私鑰檔是否能辦GPG辨認
+    - name: Verify SecretRingFile
+      run: |
+        gpg --list-secret-keys --keyring ${{ runner.temp }}/my_secret.gpg
+
+    # 若要開啟簽署功能
+    # Sign Plugin 需要這些參數寫在 gradle.properties
+    - name: Add Sign credential into Gradle Properties
+      run: |
+        echo "signing.keyId=${SIGNING_KEY_ID}" >> gradle.properties
+        echo "signing.password=${SIGNING_KEY_PASSWORD}" >> gradle.properties
+        echo "signing.secretKeyRingFile=${{ runner.temp }}/my_secret.gpg" >> gradle.properties
+
+
+    # --no-daemon 是確保Gradle 用新的process 且用完就關掉, 每個build 都是最新的, 不使用cache info
     - name: Publish to GitHub Packages
-      run: ./gradlew publishMyLibraryPublicationToMavenRepository --no-configuration-cache -scan
-      env:
-        USERNAME: ${{ github.actor }}
-        TOKEN: ${{ secrets.GPR_TOKEN }}
+      run: ./gradlew publishMyLibraryPublicationToGitHubPackagesRepository --no-daemon
+
+
+    # 若要開啟簽署功能
+    # 確保私鑰不存在Github/runner裡，避免洩露
+    - name: Clean up secret file
+      if: always()  # 無論之前的步驟成功與否，這一步都會執行
+      run: rm -rf ${{ runner.temp }}/my_secret.gpg
