@@ -25,9 +25,7 @@ jobs:
     # 以下變數名：要和publish.gradle的env variable 一致
     env:
         GITHUB_ACTOR: ${{ github.actor }}
-        GITHUB_TOKEN: ${{ secrets.GPR_TOKEN }} #TEST:若開啟簽署功能，一定要使用secrets.GPR_TOKEN？
-        SIGNING_KEY_ID: ${{ secrets.SIGN_KEYID }} #開啟簽署功能要用
-        SIGNING_KEY_PASSWORD: ${{ secrets.SIGN_PWD }} #開啟簽署功能要用
+        GITHUB_TOKEN: ${{ secrets.GPR_SNST_TOKEN }} #若開啟簽署功能，一定要使用secrets.GPR_TOKEN
 
     steps:
     - name: Checkout codes
@@ -56,29 +54,7 @@ jobs:
         echo "android.useAndroidX=true" >> gradle.properties 
         echo "android.nonTransitiveRClass=true" >> gradle.properties
 
-    # 若要開啟簽署功能
-    - name: Access SecretRingFile
-      run: |
-        printf "%s" "${{ secrets.SIGN_KEYRING }}" | base64 --decode > ${{ runner.temp }}/my_secret.gpg
-
-    # 若要開啟簽署功能
-    - name: Verify SecretRingFile
-      run: |
-        gpg --list-secret-keys --keyring ${{ runner.temp }}/my_secret.gpg
-
-    # 若要開啟簽署功能
-    - name: Add Sign credential into Gradle Properties
-      run: |
-        echo "signing.keyId=${SIGNING_KEY_ID}" >> gradle.properties
-        echo "signing.password=${SIGNING_KEY_PASSWORD}" >> gradle.properties
-        echo "signing.secretKeyRingFile=${{ runner.temp }}/my_secret.gpg" >> gradle.properties
-
     # sign plugin is not use gpg, just set secrets on env for workflow to fetch
     # --no-daemon 是確保Gradle 用新的process 且用完就關掉, 每個build 都是最新的, 不使用cache info
     - name: Publish to GitHub Packages
       run: ./gradlew publishSnapshotPublicationToGitHubSnapshotRepository --no-daemon
-
-    # 若要開啟簽署功能
-    - name: Clean up secret file
-      if: always()  # 無論之前的步驟成功與否，這一步都會執行
-      run: rm -rf ${{ runner.temp }}/my_secret.gpg

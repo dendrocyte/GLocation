@@ -4,7 +4,7 @@
 */
 apply plugin: 'maven-publish'
 //PATCH:測簽署功能
-apply plugin: 'signing'
+//apply plugin: 'signing'
 
 project.afterEvaluate {
     publishing {
@@ -85,7 +85,7 @@ project.afterEvaluate {
     }
 
     //PATCH:測簽署功能
-    signing {
-        sign publishing.publications.snapshot
-    }
+//    signing {
+//        sign publishing.publications.snapshot
+//    }
 }
