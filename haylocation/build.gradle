@@ -11,7 +11,7 @@ android {
         minSdk 24
         targetSdk 34
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -65,7 +65,9 @@ dependencies {
 ext{
     //NOTE: Update Publish Version and Publish Note when publishing every pom.xml
     publishVersion="1.0.1"
-    publishDesc="Check why Github package is not updated via workflow"
+    publishDesc="Confirm publish procedure" +
+            "1.Confirm workflow for SNAPSHOT is ready" +
+            "2.Confirm gradlew task for SNAPSHOT is ready"
 
 
     publishGroup="com.dendrocyte"
