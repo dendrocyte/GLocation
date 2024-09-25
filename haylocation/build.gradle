@@ -64,10 +64,8 @@ dependencies {
 // Publish
 ext{
     //NOTE: Update Publish Version and Publish Note when publishing every pom.xml
-    publishVersion="1.0.1"
-    publishDesc="Confirm publish procedure" +
-            "1.Confirm workflow for SNAPSHOT is ready" +
-            "2.Confirm gradlew task for SNAPSHOT is ready"
+    publishVersion="1.0.2"
+    publishDesc="Check workflow for PACKAGE is ready"
 
 
     publishGroup="com.dendrocyte"
