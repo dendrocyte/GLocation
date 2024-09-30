@@ -29,7 +29,7 @@ dependencyResolutionManagement {
 ```
 `build.gradle`
 ```
-implementation("io.github.dendrocyte:haylocation:1.0")
+implementation 'com.dendrocyte:haylocation:1.0.5'
 ```
 
 
