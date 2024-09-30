@@ -8,8 +8,32 @@ This is a textView to ask locate permission, check GPS on and present location b
 
 ### Use
 ----
+I. Declare dependency
+`setting.gradle`
+```
+pluginManagement {
+    repositories {
+        maven {
+          url = uri("https://maven.pkg.github.com/dendrocyte/haylocation")
+        }
+    }
+}
 
-Add Permission on AndroidManifest first
+dependencyResolutionManagement {
+    repositories {
+        maven {
+          url = uri("https://maven.pkg.github.com/dendrocyte/haylocation")
+        }
+    }
+}
+```
+`build.gradle`
+```
+implementation("io.github.dendrocyte:haylocation:1.0")
+```
+
+
+II. Add Permission on AndroidManifest first
 ```
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -21,7 +45,7 @@ Add Permission on AndroidManifest first
 ```
 
 
-Declare this view on xml! That's it
+III. Declare this view on xml! That's it
 ```
 <com.dendrocyte.haylocation.module.customView.UtilBtn
         android:id="@+id/btn_cuslocation"
