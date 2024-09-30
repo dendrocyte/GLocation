@@ -63,9 +63,11 @@ dependencies {
 
 // Publish
 ext{
-    //NOTE: Update Publish Version and Publish Note when publishing every pom.xml
+    //NOTE: Update Publish Version here and  Publish Note at CHANGELOG.md
     publishVersion="1.0.5"
-    publishDesc="[Bugfix] Job is skipped on workflow when publishing PACKAGE"
+    publishDesc="A button to fetch and present location by itself. " +
+            "Also provide a delegator to fetch location with view-decoupling. " +
+            "See full documentation and changelog at: https://github.com/dendrocyte/HayLocation"
 
 
     publishGroup="com.dendrocyte"
