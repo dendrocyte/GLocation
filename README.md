@@ -14,7 +14,11 @@ I. Declare dependency
 pluginManagement {
     repositories {
         maven {
-          url = uri("https://maven.pkg.github.com/dendrocyte/haylocation")
+          url "https://maven.pkg.github.com/dendrocyte/haylocation"
+          credentials {
+                username = "dendrocyte"
+                password = "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"
+            }
         }
     }
 }
@@ -22,7 +26,11 @@ pluginManagement {
 dependencyResolutionManagement {
     repositories {
         maven {
-          url = uri("https://maven.pkg.github.com/dendrocyte/haylocation")
+          url "https://maven.pkg.github.com/dendrocyte/haylocation"
+          credentials {
+                username = "dendrocyte"
+                password = "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"
+            }
         }
     }
 }
